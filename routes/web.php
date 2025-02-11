@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/', function () {
@@ -36,5 +37,7 @@ Route::get('/splash-login', function () {
 Route::get('/splash-logout', function () {
     return view('splash-logout');
 })->name('splash-logout');
+
+Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 require __DIR__.'/auth.php';

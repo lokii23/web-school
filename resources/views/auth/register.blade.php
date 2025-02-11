@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>PAP | Registration</title>
+		<link rel="icon" type="image/x-icon" href="pap1.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- MATERIAL DESIGN ICONIC FONT -->
@@ -15,7 +16,7 @@
 	<body>
 
 		<div class="wrapper" style="background-image: url('../../../register-form/images/bg-registration-form-2.jpg');">
-			<div class="inner">
+			<div class="inner2">
 				<form method="POST" action="{{ route('register') }}">
                     @csrf
 					<h3>Registration Form</h3>
@@ -41,7 +42,11 @@
 							<span class="checkmark"></span>
 						</label>
 					</div>
-					<button type="submit">Register Now</button>
+
+					<button type="submit">Register</button>
+					<br>
+					<a href="{{ route('login') }}" class="center-text">Already have an account?</a>
+					
 				</form>
 			</div>
 		</div>

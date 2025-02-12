@@ -21,7 +21,7 @@
                     @csrf
 					<h3>Registration Form</h3>
 					<div class="form-wrapper">
-						<label for="name" :value="__('Name')">Full Name</label>
+						<label for="name" :value="__('Name')">First Name</label>
 						<input type="text" name="name" class="form-control" :value="old('name')" required autofocus autocomplete="name" />
 					</div>
 					<div class="form-wrapper">
@@ -38,7 +38,7 @@
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox"> I caccept the Terms of Use & Privacy Policy.
+							<input type="checkbox"> I accept the Terms of Use & Privacy Policy.
 							<span class="checkmark"></span>
 						</label>
 					</div>

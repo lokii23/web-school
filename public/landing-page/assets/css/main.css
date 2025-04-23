@@ -146,7 +146,7 @@ h6 {
   --background-color: rgba(255, 255, 255, 0);
   --heading-color: #ffffff;
   color: var(--default-color);
-  background-color: var(--background-color);
+  background: var(--background-color);
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
@@ -826,6 +826,23 @@ section,
     transform: translate(85px, 0%);
   }
 }
+
+/* Background image for each slide */
+.slide-bg-1 {
+  background: url('../../../welcome.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.slide-bg-2 {
+  background: url('../../../landing-page/assets/img/welcome.jpg') center center no-repeat;
+  background-size: cover;
+}
+
+.slide-bg-3 {
+  background: url('../../../landing-page/assets/img/welcome.jpg') center center no-repeat;
+  background-size: cover;
+}
+
 
 /*--------------------------------------------------------------
 # About Section

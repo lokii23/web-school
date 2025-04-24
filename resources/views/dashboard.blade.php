@@ -864,7 +864,7 @@
                     </div>
                   </div>
                   <div class="member-info">
-                    <h4>Walter White</h4>
+                    <h4>Arm&hearts;sWhel Villarmia</h4>
                     <span>Chief Executive Officer</span>
                   </div>
                 </div>

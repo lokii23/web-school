@@ -702,6 +702,7 @@ section,
   margin-bottom: 30px;
   font-size: 48px;
   font-weight: 700;
+  color: white;
 }
 
 .hero h2 span {
@@ -831,6 +832,7 @@ section,
 .slide-bg-1 {
   background: url('../../../welcome.jpg') center center no-repeat;
   background-size: cover;
+  color: white;
 }
 
 .slide-bg-2 {

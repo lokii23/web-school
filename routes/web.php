@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 
 Route::get('/', function () {
@@ -39,5 +40,14 @@ Route::get('/splash-logout', function () {
 })->name('splash-logout');
 
 Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/users/{id}/edit', [AdminController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
+
+});
 
 require __DIR__.'/auth.php';

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Admin Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
 </head>
 <body class="bg-gray-100 flex min-h-screen">
 
@@ -16,14 +15,17 @@
             SUPER ADMIN PANEL
         </div>
         <nav class="flex-1 space-y-2">
-            <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded text-black hover:bg-gray-200 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 font-semibold' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded text-black hover:bg-gray-200 {{ request()->routeIs('admin.dashboard') ? 'bg-red-600 font-semibold' : '' }}">
                 Dashboard
             </a>
-            <a href="{{ route('admin.users') }}" class="block px-4 py-2 rounded text-white  {{ request()->routeIs('admin.users') ? 'bg-red-600 font-semibold' : '' }}">
+            <a href="{{ route('admin.users') }}" class="block px-4 py-2 rounded text-white {{ request()->routeIs('admin.users') ? 'bg-red-600 font-semibold' : '' }}">
                 Users
             </a>
-            <a href="{{ route('admin.subjects.create') }}" class="block px-4 py-2 rounded hover:bg-gray-200  {{ request()->routeIs('admin.subjects') ? 'bg-gray-200font-semibold' : '' }}">
-                Create Subjects
+            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.subjects') ? 'bg-gray-200 font-semibold' : '' }}">
+                Subjects
+            </a>
+            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.exams') ? 'bg-gray-200 font-semibold' : '' }}">
+                Exams
             </a>
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -74,33 +76,19 @@
                             <td class="px-4 py-2 capitalize">{{ $user->usertype }}</td>
                             <td class="px-4 py-2 space-x-2">
                                 <a href="{{ route('admin.users.edit', $user->id) }}"
-                                class="bg-yellow-500 text-white px-6 py-1 rounded hover:bg-yellow-600">
+                                class="inline-block px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500 text-sm">
                                     Edit
                                 </a>
 
-                                <!-- Delete Button triggers modal -->
-                                <button onclick="openModal({{ $user->id }})"
-                                    class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-500">
-                                Delete
-                                </button>
-
-                                <!-- Modal -->
-                                <div id="modal-{{ $user->id }}" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-                                    <div class="bg-white p-6 rounded shadow-lg max-w-md w-68">
-                                        <h2 class="text-lg font-semibold mb-4">Delete Confirmation</h2>
-                                        <p class="mb-4">Are you sure you want to delete <strong>{{ $user->name }}</strong>?</p>
-                                        <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <div class="flex justify-end gap-2">
-                                                <button type="button" onclick="closeModal({{ $user->id }})"
-                                                        class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Cancel</button>
-                                                <button type="submit"
-                                                        class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">Delete</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline-block"
+                                    onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                            class="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 text-sm">
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @empty
@@ -114,15 +102,4 @@
     </main>
 
 </body>
-<script>
-    function openModal(id) {
-        document.getElementById(`modal-${id}`).classList.remove('hidden');
-        document.getElementById(`modal-${id}`).classList.add('flex');
-    }
-
-    function closeModal(id) {
-        document.getElementById(`modal-${id}`).classList.add('hidden');
-        document.getElementById(`modal-${id}`).classList.remove('flex');
-    }
-</script>
 </html>

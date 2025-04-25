@@ -27,8 +27,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        if($request->user()->usertype == 'admin'){
+        if($request->user()->usertype == 'admin' ){
             return redirect('admin/dashboard');
+        }
+        else if($request->user()->usertype == 'teacher' ){
+            return redirect('teacher/dashboard');
         }
 
         return redirect()->intended(route('splash-login', absolute: false));

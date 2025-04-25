@@ -15,14 +15,17 @@
             SUPER ADMIN PANEL
         </div>
         <nav class="flex-1 space-y-2">
-            <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-200 font-semibold' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 rounded text-white {{ request()->routeIs('admin.dashboard') ? 'bg-red-600 font-semibold' : '' }}">
                 Dashboard
             </a>
-            <a href="{{ route('admin.users') }}" class="block px-4 py-2 rounded text-white {{ request()->routeIs('admin.users.edit') ? 'bg-red-600 font-semibold' : '' }}">
+            <a href="{{ route('admin.users') }}" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.users') ? 'bg-gray-200 font-semibold' : '' }}">
                 Users
             </a>
-            <a href="{{ route('admin.subjects.create') }}" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.subjects') ? 'bg-gray-200 font-semibold' : '' }}">
-                Create Subjects
+            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.subjects') ? 'bg-gray-200 font-semibold' : '' }}">
+                Subjects
+            </a>
+            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.exams') ? 'bg-gray-200 font-semibold' : '' }}">
+                Exams
             </a>
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
@@ -61,10 +64,8 @@
             </select>
         </div>
 
-        <button type="submit" class=" text-black px-4 py-2 rounded hover:bg-blue-700 hover:text-white">Update</button>
-        <a href="{{ route('admin.users') }}" class=" text-black px-5 py-2 rounded hover:bg-green-700 hover:text-white">Cancel</a>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Update</button>
     </form>
-    
     </main>
 
 </body>

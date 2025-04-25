@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TeacherController;
 
 
 Route::get('/', function () {
@@ -48,6 +49,31 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/users/{id}', [AdminController::class, 'update'])->name('admin.users.update');
     Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('admin.users.destroy');
 
+     // Show all subjects
+     Route::get('/admin/subjects', [AdminController::class, 'index'])->name('admin.subjects.index');
+
+     // Show create form
+     Route::get('/admin/subjects/create', [AdminController::class, 'create'])->name('admin.subjects.create');
+ 
+     // Store new subject
+     Route::post('/admin/subjects', [AdminController::class, 'store'])->name('admin.subjects.store');
+ 
+     // Show edit form
+     Route::get('/admin/subjects/{subject}/edit', [AdminController::class, 'editsub'])->name('admin.subjects.edit');
+ 
+     // Update subject
+     Route::put('/admin/subjects/{subject}', [AdminController::class, 'updatesub'])->name('admin.subjects.update');
+ 
+     // Delete subject
+     Route::delete('/admin/subjects/{subject}', [AdminController::class, 'destroysub'])->name('admin.subjects.destroy');
+ 
+
 });
+
+Route::middleware(['auth', 'teacher'])->group(function () {
+    Route::get('/teacher/dashboard', [TeacherController::class, 'viewSub'])->name('teacher.dashboard');
+
+});
+
 
 require __DIR__.'/auth.php';

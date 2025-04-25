@@ -21,11 +21,8 @@
             <a href="{{ route('admin.users') }}" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.users') ? 'bg-gray-200 font-semibold' : '' }}">
                 Users
             </a>
-            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.subjects') ? 'bg-gray-200 font-semibold' : '' }}">
-                Subjects
-            </a>
-            <a href="#" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.exams') ? 'bg-gray-200 font-semibold' : '' }}">
-                Exams
+            <a href="{{ route('admin.subjects.create') }}" class="block px-4 py-2 rounded hover:bg-gray-200 {{ request()->routeIs('admin.subjects') ? 'bg-gray-200 font-semibold' : '' }}">
+                Create Subjects
             </a>
             <a href="{{ route('logout') }}"
                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
